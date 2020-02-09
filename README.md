@@ -7,8 +7,11 @@ The MIPS pipeline has the following 5 stages:<br/>
 4. Memory (MEM): loads or stores a 32-bit word from data memory.<br/>
 5. Writeback (WB): writes back data to the RF.<br/>
 
-<p>Each pipeline stages takes inputs from flip-flops. The input flip-flops for each pipeline stage are described in the tables below.</p>
-
+<p>Each pipeline stages takes inputs from flip-flops. The input flip-flops for each pipeline stage are described in the tables below.</p><br/>
+<img src="1.png"><br/>
+<img src="2.png"><br/>
+<img src="3.png"><br/>
+<img src="4.png"><br/>
 <h3>Dealing with Hazards</h3>
 1. RAW Hazards: RAW hazards are dealt with using either only forwarding (if possible) or, if not, using stalling + forwarding.<br/>
 2. Control Flow Hazards: Assume that branch conditions are resolved in the ID/RF stage of the pipeline. The processor deals with beq instructions as follows:<br/>
