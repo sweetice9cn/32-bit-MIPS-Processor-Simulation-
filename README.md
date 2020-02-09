@@ -1,6 +1,6 @@
 # 32-bit-MIPS-Processor-Simulation-
 <h3>Pipeline Structure</h3>
-The MIPS pipeline has the following 5 stages:
+The MIPS pipeline has the following 5 stages:<br/>
 1. Fetch (IF): fetches an instruction from instruction memory. Updates PC.<br/>
 2. Decode (ID/RF): reads from the register RF and generates control signals required in subsequent stages. In addition, branches are resolved in this stage by checking for the branch condition and computing the effective address.<br/>
 3. Execute (EX): performs an ALU operation.<br/>
@@ -10,12 +10,12 @@ The MIPS pipeline has the following 5 stages:
 Each pipeline stages takes inputs from flip-flops. The input flip-flops for each pipeline stage are described in the tables below.
 
 <h3>Dealing with Hazards</h3>
-1. RAW Hazards: RAW hazards are dealt with using either only forwarding (if possible) or, if not, using stalling + forwarding.
-2. Control Flow Hazards: Assume that branch conditions are resolved in the ID/RF stage of the pipeline. The processor deals with beq instructions as follows:
-a. Branches are always assumed to be NOT TAKEN. That is, when a beq is fetched in the IF stage, the PC is speculatively updated as PC+4.
-b. Branch conditions are resolved in the ID/RF stage.
-c. Two operations are performed in the ID/RF stage: (i) Read_data1 and Read_data2 are compared to determine the branch outcome; (ii) the effective branch address is computed.
-d. If the branch is NOT TAKEN, execution proceeds normally. However, if the branch is TAKEN, the speculatively fetched instruction from PC+4 is quashed in its ID/RF stage using the nop bit and the next instruction is fetched from the effective branch address. Execution now proceeds normally.
+1. RAW Hazards: RAW hazards are dealt with using either only forwarding (if possible) or, if not, using stalling + forwarding.<br/>
+2. Control Flow Hazards: Assume that branch conditions are resolved in the ID/RF stage of the pipeline. The processor deals with beq instructions as follows:<br/>
+a. Branches are always assumed to be NOT TAKEN. That is, when a beq is fetched in the IF stage, the PC is speculatively updated as PC+4.<br/>
+b. Branch conditions are resolved in the ID/RF stage.<br/>
+c. Two operations are performed in the ID/RF stage: (i) Read_data1 and Read_data2 are compared to determine the branch outcome; (ii) the effective branch address is computed.<br/>
+d. If the branch is NOT TAKEN, execution proceeds normally. However, if the branch is TAKEN, the speculatively fetched instruction from PC+4 is quashed in its ID/RF stage using the nop bit and the next instruction is fetched from the effective branch address. Execution now proceeds normally.<br/>
 
 <h3>The nop bit</h3>
 The nop bit for any stage indicates whether it is performing a valid operation in the current clock cycle. The nop bit for the IF stage is initialized to 0 and for all other stages is initialized to 1. (This is because in the first clock cycle, only the IF stage performs a valid operation.)
