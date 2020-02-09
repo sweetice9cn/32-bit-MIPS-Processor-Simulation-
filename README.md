@@ -6,3 +6,8 @@ The MIPS pipeline has the following 5 stages:
 3. Execute (EX): performs an ALU operation.
 4. Memory (MEM): loads or stores a 32-bit word from data memory.
 5. Writeback (WB): writes back data to the RF.
+Each pipeline stages takes inputs from flip-flops. The input flip-flops for each pipeline stage are described in the tables below.
+IF Stage Input Flip-Flops
+Flip-Flop Name   Bit-width   Functionality
+PC               32          Current value of PC
+nop              1           If set, IF stage performs a nop
